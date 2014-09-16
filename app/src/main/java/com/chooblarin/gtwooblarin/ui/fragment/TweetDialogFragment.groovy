@@ -30,7 +30,7 @@ class TweetDialogFragment extends DialogFragment {
         dialog.setContentView(R.layout.dialog_tweet)
 
         EditText input = dialog.findViewById(R.id.input_tweet_text) as EditText
-        dialog.findViewById(R.id.dialog_button_tweet).setOnClickListener {
+        dialog.findViewById(R.id.dialog_button_tweet).onClickListener = {
             String tweetText = input.text as String
             callback.call(tweetText)
             dismiss()

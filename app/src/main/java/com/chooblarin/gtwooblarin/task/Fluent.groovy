@@ -7,10 +7,10 @@ import groovy.transform.CompileStatic
 class Fluent<Result> {
 
     public static interface ResultConsumer<T> {
-        void consume(T result);
+        void consume(T result)
     }
 
-    private final Closure<Result> request;
+    private final Closure<Result> request
     private final ResultConsumer<Result> then
 
     private Handler handler
@@ -33,18 +33,15 @@ class Fluent<Result> {
                 //Result result = req.call()
                 def result = req.call()
 
-                han.post(new Runnable() {
-                    @Override
-                    void run() {
-                        thn.consume(result)
-                    }
-                })
+                han.post {
+                    thn.consume(result)
+                }
             }
         }).start()
     }
 
     public static class FluentAsyncTaskBuilder<Result> {
-        Closure<Result> request;
+        Closure<Result> request
 
         FluentAsyncTaskBuilder from(Closure<Result> request) {
             this.request = request

@@ -31,11 +31,11 @@ class TweetListFragment extends Fragment {
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_tweet_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tweet_list, container, false)
 
-        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.tweet_swipe_refresh);
-        listView = (ListView) rootView.findViewById(R.id.tweet_list_view);
-        tweetButton = (Button) rootView.findViewById(R.id.tweet_button);
+        refreshLayout = rootView.findViewById(R.id.tweet_swipe_refresh) as SwipeRefreshLayout
+        listView = rootView.findViewById(R.id.tweet_list_view) as ListView
+        tweetButton = rootView.findViewById(R.id.tweet_button) as Button
         return rootView;
     }
 
@@ -52,7 +52,7 @@ class TweetListFragment extends Fragment {
         }
 
         tweetAdapter = new TweetAdapter(activity, [])
-        listView.setAdapter(tweetAdapter)
+        listView.adapter = tweetAdapter
 
         reloadTimeLine();
     }
